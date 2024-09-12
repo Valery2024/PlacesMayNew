@@ -8,11 +8,8 @@
 import UIKit
 
 class MainViewController: UITableViewController {
-    let restauratnNames = ["Балкан Гриль", "Бочка",
-                           "Вкусные истории", "Дастархан",
-                           "Индокитай", "Классик", "Шок",
-                           "Bonsai","Burger Heroes", "Kitchen","Love&Life","Morris Pub","Sherlock Holmes","Speak Easy","X.O"
-    ]
+   
+    let places = ModelPlace.getPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +22,7 @@ class MainViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return restauratnNames.count
+        return places.count
     }
     
     
@@ -33,19 +30,24 @@ class MainViewController: UITableViewController {
         
         // Configure the cell...
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)as!CustomTableViewCell
-        cell.nameLabel?.text = restauratnNames[indexPath.row]
-        cell.imageOfPlace?.image = UIImage(named: restauratnNames[indexPath.row])
+        cell.nameLabel?.text = places[indexPath.row].name
+        cell.lacationLabel.text = places[indexPath.row].location
+        cell.typeLabel.text = places[indexPath.row].type
+        
+        cell.imageOfPlace?.image = UIImage(named: places[indexPath.row].image)
         cell.imageOfPlace?.layer.cornerRadius = cell.imageOfPlace.frame.height/2
         cell.imageOfPlace?.clipsToBounds = true//обрезает или показывает наш круг
         
         return cell
         
     }
-    //MARK: TableView delegate
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        85
-    }
 }
+    //MARK: TableView delegate
+//    //так как высоту строки установили через сториборд этот метод не нужен
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        85
+//    }
+
   /*cell.textLabel?.text - это свойство отражает в ячейке текстовую информацию в нашем случае наименование ресторана. detailTextLabel-отображает более детальную информацию . imageView?- отображает изображение в нашей ячейке. Все эти штуки прикрепляютчся к contentview*/
 
     /*
