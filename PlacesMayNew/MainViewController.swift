@@ -41,6 +41,10 @@ class MainViewController: UITableViewController {
         return cell
         
     }
+    
+    //metod cansel-этот метод возвращает на главный экран при нажатии на кнопку
+    
+    @IBAction  func canselAction(_ segue: UIStoryboardSegue){}
 }
     //MARK: TableView delegate
 //    //так как высоту строки установили через сториборд этот метод не нужен
