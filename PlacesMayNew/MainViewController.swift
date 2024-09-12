@@ -32,11 +32,11 @@ class MainViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Configure the cell...
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = restauratnNames[indexPath.row]
-        cell.imageView?.image = UIImage(named: restauratnNames[indexPath.row])
-        cell.imageView?.layer.cornerRadius = cell.frame.height/2
-        cell.imageView?.clipsToBounds = true//обрезает или показывает наш круг
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)as!CustomTableViewCell
+        cell.nameLabel?.text = restauratnNames[indexPath.row]
+        cell.imageOfPlace?.image = UIImage(named: restauratnNames[indexPath.row])
+        cell.imageOfPlace?.layer.cornerRadius = cell.imageOfPlace.frame.height/2
+        cell.imageOfPlace?.clipsToBounds = true//обрезает или показывает наш круг
         
         return cell
         
